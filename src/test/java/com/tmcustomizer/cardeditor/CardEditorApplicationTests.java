@@ -8,11 +8,14 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.tmcustomizer.cardeditor.model.Card;
 import com.tmcustomizer.cardeditor.repository.CardRepository;
 
 @SpringBootTest(classes = CardEditorApplication.class)
+@ActiveProfiles("test")
+
 class CardEditorApplicationTests {
     private static final Logger logger = LoggerFactory.getLogger(CardEditorApplicationTests.class);
 
