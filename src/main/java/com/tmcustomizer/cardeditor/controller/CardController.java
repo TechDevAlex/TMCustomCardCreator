@@ -12,25 +12,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tmcustomizer.cardeditor.model.Card;
 import com.tmcustomizer.cardeditor.repository.CardRepository;
 
-
-
 @RestController
 @RequestMapping("/cards")
-public class CardController{
+public class CardController {
 
-    @Autowired
-    private CardRepository cardRepository;
+    private final CardRepository cardRepository;
+
+    public CardController(CardRepository cardRepository) {
+        this.cardRepository = cardRepository;
+    }
 
     @PostMapping
-    public Card createCard(@RequestBody Card card) { 
-       return cardRepository.save(card);
+    public Card createCard(@RequestBody Card card) {
+        return cardRepository.save(card);
     }
+
     @GetMapping
     public List<Card> getAllCards() {
         return cardRepository.findAll();
     }
-    
-    
+
 }
-
-
