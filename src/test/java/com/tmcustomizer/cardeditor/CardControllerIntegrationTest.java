@@ -1,5 +1,6 @@
 package com.tmcustomizer.cardeditor;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import java.sql.Connection;
@@ -34,7 +35,7 @@ class CardControllerIntegrationTest {
         try (Connection connection = dataSource.getConnection()) {
             String url = connection.getMetaData().getURL();
             System.out.println("Database URL: " + url);
-            assert url.equals("jdbc:postgresql://localhost:5432/custom_card_editor_test");
+            assertEquals("jdbc:postgresql://localhost:5432/custom_card_editor_test", url);
         }
     }
 
@@ -55,10 +56,5 @@ class CardControllerIntegrationTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("Card1"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].name").value("Card2"));
     }
-
-    // @Test 
-    // void testPutCardIntoDB() throws Exception{
-    //     cardRepository
-    // }
 
 }
